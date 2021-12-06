@@ -1,0 +1,19 @@
+{
+    "name": "Keep Platzi Full Screen",
+    "description": "Keep Full Screen",
+    "version": "1.0",
+    "manifest_version": 3,
+    "background": {
+        "service_worker": "background.js"
+    },
+    "permissions": ["storage","activeTab", "scripting"],
+    "content_scripts": [
+        {
+            "matches": ["https://platzi.com/clases/*"],
+            "js": ["./contentScript.js"]
+        }
+    ],
+    "action": {
+        "default_popup": "popup.html"
+    }
+}
