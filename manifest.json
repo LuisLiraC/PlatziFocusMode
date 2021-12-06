@@ -1,20 +1,20 @@
 {
-    "name": "Keep Platzi Full Screen",
-    "description": "Keep Full Screen",
+    "name": "Platzi Focus Mode",
+    "description": "Keep focused only in the classes.",
     "version": "1.0",
     "manifest_version": 3,
     "background": {
-        "service_worker": "background.js"
+        "service_worker": "./js/background.js"
     },
-    "permissions": ["storage","activeTab", "scripting"],
+    "permissions": ["storage", "activeTab", "scripting"],
     "content_scripts": [
         {
             "matches": ["https://platzi.com/clases/*"],
-            "js": ["./contentScript.js"]
+            "js": ["./js/contentScript.js"]
         }
     ],
     "action": {
-        "default_popup": "popup.html",
+        "default_popup": "./html/popup.html",
         "default_icon": {
             "16": "/images/icon16.png",
             "32": "/images/icon32.png",

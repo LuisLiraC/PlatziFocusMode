@@ -1,0 +1,12 @@
+body {
+  font-family: sans-serif;
+  min-width: 150px;
+  padding: 3px;
+  text-align: center;
+  background-color: #121F3D;
+  color: white;
+}
+
+span {
+  font-size: 14px;
+}
