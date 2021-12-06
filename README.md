@@ -1,6 +1,6 @@
 # How to install it
 
-1. Open Google Chrome [Extesions](chrome://extensions).
+1. Open Google Chrome Extensions using the following URL: chrome://extensions.
 2. Active Developer Mode that is the upper right section of the window.
 3. Download this repository in a .zip file.
 4. Unpack the .zip.
