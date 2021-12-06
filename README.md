@@ -7,3 +7,8 @@
 5. Return to Extension windows and click on Load Unpacked.
 6. Select the folder that contains the files
 7. Enojy it :D
+
+![Imgur](https://imgur.com/Kj2Prc4.gif)
+
+
+> This extension is based in [edevars Platzi Full Mode Extension](https://github.com/edevars/Platzi-Video-Wide-Extension/)
