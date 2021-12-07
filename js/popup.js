@@ -66,7 +66,6 @@ function removeFullScreen() {
   let Syllabus = document.querySelector('.Syllabus')
   let MaterialViewContent = document.querySelector('.MaterialView-content')
 
-  MaterialView.style.display = 'grid'
   MaterialView.style.paddingLeft = '32px'
 
   VideoPlayer.style.zIndex = null
