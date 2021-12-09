@@ -70,12 +70,12 @@ function removeFullScreen() {
 
   VideoPlayer.style.zIndex = null
 
-  if (window.innerWidth >= 1440) {
+  if (window.innerWidth > 1440) {
     MaterialView.style.display = 'flex'
     VideoPlayer.style.height = '759.375px'
   }
 
-  if (window.innerWidth < 1440) {
+  if (window.innerWidth <= 1440) {
     MaterialView.style.display = 'grid'
     VideoPlayer.style.height = '0'
     MaterialViewVideoItem.style.minHeight = 'auto'
