@@ -1,5 +1,5 @@
 chrome.storage.sync.get('state', ({ state }) => {
-  state ? setFullScreen() : removeFullScreen()
+  state ? setFullScreen() : null
 })
 
 function setFullScreen() {
@@ -14,20 +14,25 @@ function setFullScreen() {
   let MaterialViewContent = document.querySelector('.MaterialView-content')
 
   Video.addEventListener('playing', () => {
-    Header.style.display = 'none'
-    Syllabus.style.display = 'none'
+    chrome.storage.sync.get('state', ({ state }) => {
+      if (state) {
+        Header.style.display = 'none'
+        Syllabus.style.display = 'none'
+    
+        MaterialView.style.display = 'block'
+        MaterialView.style.paddingLeft = '0'
+    
+        VideoPlayer.style.zIndex = '999'
+        VideoPlayer.style.height = '95vh'
+    
+        if (window.innerWidth < 1440) {
+          MaterialViewVideoItem.style.maxWidth = '100vw'
+        }
+    
+        MaterialViewContent.style.margin = '12% auto'
+      }
+    })
 
-    MaterialView.style.display = 'block'
-    MaterialView.style.paddingLeft = '0'
-
-    VideoPlayer.style.zIndex = '999'
-    VideoPlayer.style.height = '95vh'
-
-    if (window.innerWidth < 1440) {
-      MaterialViewVideoItem.style.maxWidth = '100vw'
-    }
-
-    MaterialViewContent.style.margin = '12% auto'
   })
 }
 
@@ -35,7 +40,6 @@ function removeFullScreen() {
   let MaterialView = document.querySelector(
     '.MaterialView.MaterialView-type--video'
   )
-  let MaterialViewVideoItem = document.querySelector('.MaterialView-video-item')
   let VideoPlayer = document.querySelector('.VideoPlayer > div')
   let Header = document.querySelector('.Header-v2.Header-v2-content')
   let Syllabus = document.querySelector('.Syllabus')
@@ -45,16 +49,7 @@ function removeFullScreen() {
 
   VideoPlayer.style.zIndex = null
 
-  if (window.innerWidth > 1440) {
-    MaterialView.style.display = 'flex'
-    VideoPlayer.style.height = '759.375px'
-  }
-
-  if (window.innerWidth <= 1440) {
-    MaterialView.style.display = 'grid'
-    VideoPlayer.style.height = '0'
-    MaterialViewVideoItem.style.minHeight = 'auto'
-  }
+  setColumns()
 
   Header.style.display = 'grid'
   Syllabus.style.display = 'block'
@@ -86,8 +81,11 @@ window.addEventListener('resize', () => {
         MaterialViewVideoItem.style.maxWidth = '100vw'
       }
 
-      MaterialViewContent.style.margin = '0 auto'
+      MaterialViewContent.style.margin = '12% auto'
+    } else {
+      setColumns()
     }
+    
   })
 })
 
@@ -131,3 +129,24 @@ window.addEventListener('keydown', (event) => {
     })
   }
 })
+
+function setColumns() {
+  let MaterialView = document.querySelector(
+    '.MaterialView.MaterialView-type--video'
+  )
+  let VideoPlayer = document.querySelector('.VideoPlayer > div')
+  let MaterialViewVideoItem = document.querySelector(
+    '.MaterialView-video-item'
+  )
+
+  if (window.innerWidth > 1440) {
+    MaterialView.style.display = 'flex'
+    VideoPlayer.style.height = '759.375px'
+  }
+  
+  if (window.innerWidth <= 1440) {
+    MaterialView.style.display = 'grid'
+    VideoPlayer.style.height = '0'
+    MaterialViewVideoItem.style.minHeight = 'auto'
+  }
+}

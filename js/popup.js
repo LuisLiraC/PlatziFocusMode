@@ -60,7 +60,6 @@ function removeFullScreen() {
   let MaterialView = document.querySelector(
     '.MaterialView.MaterialView-type--video'
   )
-  let MaterialViewVideoItem = document.querySelector('.MaterialView-video-item')
   let VideoPlayer = document.querySelector('.VideoPlayer > div')
   let Header = document.querySelector('.Header-v2.Header-v2-content')
   let Syllabus = document.querySelector('.Syllabus')
@@ -70,18 +69,30 @@ function removeFullScreen() {
 
   VideoPlayer.style.zIndex = null
 
+  setColumns()
+
+  Header.style.display = 'grid'
+  Syllabus.style.display = 'block'
+  MaterialViewContent.style.margin = '0 auto'
+}
+
+function setColumns() {
+  let MaterialView = document.querySelector(
+    '.MaterialView.MaterialView-type--video'
+  )
+  let VideoPlayer = document.querySelector('.VideoPlayer > div')
+  let MaterialViewVideoItem = document.querySelector(
+    '.MaterialView-video-item'
+  )
+
   if (window.innerWidth > 1440) {
     MaterialView.style.display = 'flex'
     VideoPlayer.style.height = '759.375px'
   }
-
+  
   if (window.innerWidth <= 1440) {
     MaterialView.style.display = 'grid'
     VideoPlayer.style.height = '0'
     MaterialViewVideoItem.style.minHeight = 'auto'
   }
-
-  Header.style.display = 'grid'
-  Syllabus.style.display = 'block'
-  MaterialViewContent.style.margin = '0 auto'
 }
